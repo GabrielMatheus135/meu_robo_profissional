@@ -15,10 +15,13 @@ jobs:
 
       - name: Commit do relatório
         run: |
-          git config user.name "github-actions"
-          git add dados/relatorio.csv
-          git commit -m "Atualização diaria"
-          git push
+           git config user.name "github-actions"
+           git config user.email "github-actions@github.com"
+
+           git add dados/relatorio.csv
+           git commit -m "Atualização diaria" || echo "Nada para commitar"
+
+           git push
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
